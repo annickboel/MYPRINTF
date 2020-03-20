@@ -1,0 +1,46 @@
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra
+SRCS = $(wildcard *.c)
+OBJS = $(SRC:.c=.o)
+OBJ	= $(SRC:.c=.o)
+DEPS = $(wildcard *.h)
+LDFLAGS=
+
+HARDWARE := $(shell uname -m)
+OS := $(shell uname -s)
+
+STATIC_LIB_NAME	= libmy_printf_$(HARDWARE)-$(OS).a
+DYNAMIC_LIB_NAME = libmy_printf_$(HARDWARE)-$(OS).so
+RM=rm -rf					
+CLEAN=clean	
+
+all: my_printf_static my_printf_dynamic
+
+my_printf_static: $(OBJS)
+	echo "compile static lib $(STATIC_LIB_NAME)"
+
+my_printf_dynamic:
+	echo "compile dynamic library  $(DYNAMIC_LIB_NAME)" 
+
+%.o: %.c
+	$(CC) -o $@ -c $< $(CFLAGS)
+
+
+$(EXEC): $(OBJ)
+	$(CC) -o $@ $^ $(LDFLAGS)
+
+main.o: ${DEPS}
+
+$(OBJS): %.c
+	$(CC) -o $@ -c $< $(CFLAGS)
+
+.PHONY: all clean fclean re
+
+clean:
+	$(RM) -rf $(OBJS)
+
+fclean: clean
+	$(RM) $(STATIC_LIB_NAME) $(DYNAMIC_LIB_NAME)
+
+re: fclean all
+

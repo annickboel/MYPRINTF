@@ -1,5 +1,15 @@
 CC=gcc
 CFLAGS=-Wall -Werror -Wextra
+
+HARDWARE := $(shell uname -m)
+OS := $(shell uname -s)
+
+STATIC_LIB	= my_printf_static
+DYNAMIC_LIB = my_printf_dynamic
+
+STATIC_LIB_NAME	= libmy_printf_$(HARDWARE)-$(OS).a
+DYNAMIC_LIB_NAME = libmy_printf_$(HARDWARE)-$(OS).so
+
 SRC= $(wildcard *.c)
 OBJ= $(SRC:.c=.o)
 DEPS = $(wildcard *.h)
@@ -8,10 +18,11 @@ EXEC=my_printf
 RM=rm -rf					
 CLEAN=clean	
 
-all: $(EXEC)
+all: $(STATIC_LIB)
 
-$(EXEC): $(OBJ)
-	$(CC) -o $@ $^ $(LDFLAGS)
+$(STATIC_LIB): $(OBJ)
+	ar rc $(STATIC_LIB_NAME) $(OBJ)
+	ranlib $(STATIC_LIB_NAME)
 
 main.o: ${DEPS}
 
@@ -21,10 +32,10 @@ main.o: ${DEPS}
 .PHONY: all clean fclean re
 
 clean:
-	@rm -rf $(OBJ)
+	$(RM) -rf $(OBJ)
 
 fclean: clean
-	@rm -rf $(EXEC)
+	$(RM) $(STATIC_LIB_NAME) $(DYNAMIC_LIB_NAME)
 
 re: fclean all
 
