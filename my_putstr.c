@@ -10,3 +10,5 @@ int	my_putstr(const char *str)
 	}
 	return (i);
 }
+
+
