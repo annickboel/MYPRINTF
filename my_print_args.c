@@ -51,10 +51,10 @@ int print_o_arg(va_list ap) {
 int print_u_arg(va_list ap) {
 	
 	int	written = 0;
-	int integer;
+	unsigned int nbr;
 
-	integer = (int) va_arg(ap, int);
-	my_putnbr_base(integer, 10);
+	nbr = (unsigned int) va_arg(ap, unsigned int);
+	my_put_unsigned_nbr(nbr);
 	return (written);
 }
 

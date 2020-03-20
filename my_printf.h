@@ -3,11 +3,6 @@
 
 #include <stdarg.h>
 #include <unistd.h>
-/*#include "my_putstr.h"
-#include "my_putnbr.h"
-#include "my_puthexa.h"
-#include "my_strlen.h"*/
-
 
 typedef struct f_print
 {
@@ -29,10 +24,10 @@ int print_Z_arg(va_list ap);
 int my_printf(const char *, ...);
 int get_printer(const char);
 
-int	my_putchar(int c);
+int	my_putchar(const int c);
 int my_puthexa(const int nb, const int flag);
-int my_putnbr(const int nb);
 int my_putnbr_base(const int nb, const int base);
+int my_put_unsigned_nbr(unsigned int nb);
 int	my_putstr(const char* s);
 int my_strlen(char const *str);
 
