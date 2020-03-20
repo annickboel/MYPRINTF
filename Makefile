@@ -23,12 +23,8 @@ $(STATIC_LIB): $(OBJ)
 	ar rc $(STATIC_LIB_NAME) $(OBJ)
 	ranlib $(STATIC_LIB_NAME)
 
-#$(STATIC_LIB): $(OBJ)
-#	ar rc $(STATIC_LIB_NAME) $(OBJ)
-#	ranlib $(STATIC_LIB_NAME)
-
 $(DYNAMIC_LIB): $(OBJ)
-	echo "Make $(DYNAMIC_LIB)"
+	$(CC) -shared -o $(DYNAMIC_LIB_NAME) $(OBJ)
 
 main.o: ${DEPS}
 

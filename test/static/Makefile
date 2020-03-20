@@ -5,7 +5,7 @@ HARDWARE := $(shell uname -m)
 OS := $(shell uname -s)
 
 STATIC_LIB_NAME	= my_printf_$(HARDWARE)-$(OS)
-LIB_DIR=../..
+LIB_DIR=.
 SRC= $(wildcard *.c)
 OBJ= $(SRC:.c=.o)
 DEPS = $(wildcard *.h)
