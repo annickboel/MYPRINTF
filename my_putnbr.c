@@ -1,6 +1,5 @@
 
-#include "my_putnbr.h"
-#include <stdio.h>
+#include "my_printf.h"
 
 int my_putnbr(const int nb) {
   int written = 0;
@@ -30,7 +29,6 @@ int my_putnbr(const int nb) {
 
 
 int my_putnbr_base(const int nb, const int base) {
-  //printf("my_putnbr_base %d %d\n", nb, base);
   int written = 0;
   int value = nb;
   int mod;
@@ -43,9 +41,8 @@ int my_putnbr_base(const int nb, const int base) {
    if (value >= 0)  {
       if (value >= base) {
         mod = (nb % base);
-        //printf("mod %d\n", mod);
+
         value = (nb - mod) / base;
-        //printf("value %d\n", value);
         my_putnbr(value);
         my_putchar(48 + mod);
         written ++;

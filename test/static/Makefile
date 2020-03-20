@@ -20,7 +20,6 @@ all: $(OBJ)
 main.o: ${DEPS}
 
 %.o: %.c
-	#$(CC) -o $@ -c $< $(CFLAGS) -L. -l${STATIC_LIB_NAME}
 	$(CC) $(CFLAGS) main.c -L$(LIB_DIR) -l$(STATIC_LIB_NAME)
 
 .PHONY: all clean fclean re

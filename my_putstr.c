@@ -1,4 +1,4 @@
-#include "my_putstr.h"
+#include "my_printf.h"
 
 int	my_putstr(const char *str)
 {

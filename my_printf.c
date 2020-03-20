@@ -1,5 +1,4 @@
 #include "my_printf.h"
-#include <stdio.h> 
 
 int get_printer(const char specifier) {
 	int i;
@@ -27,9 +26,7 @@ int	print_arg(const char flag, va_list ap)
 	printers[6].pf = &print_x_arg;
 	printers[7].pf = &print_X_arg;
 	printers[8].pf = &print_Z_arg;
-	//int index=get_printer(flag);
-	//written += printers[index].pf(ap);
-
+	
 	switch (flag) {
 		case 's':
 			written += printers[0].pf(ap);

@@ -1,4 +1,4 @@
-#include "my_putchar.h"
+#include "my_printf.h"
 
 int	my_putchar(int c)
 {

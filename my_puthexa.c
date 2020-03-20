@@ -1,4 +1,4 @@
-#include "my_puthexa.h"
+#include "my_printf.h"
 
 int my_puthexa(const int nb, const int flag) {
   int written = 0;

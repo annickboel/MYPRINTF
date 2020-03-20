@@ -14,15 +14,21 @@ SRC= $(wildcard *.c)
 OBJ= $(SRC:.c=.o)
 DEPS = $(wildcard *.h)
 LDFLAGS=
-EXEC=my_printf
 RM=rm -rf					
 CLEAN=clean	
 
-all: $(STATIC_LIB)
+all: $(STATIC_LIB) $(DYNAMIC_LIB)  
 
 $(STATIC_LIB): $(OBJ)
 	ar rc $(STATIC_LIB_NAME) $(OBJ)
 	ranlib $(STATIC_LIB_NAME)
+
+#$(STATIC_LIB): $(OBJ)
+#	ar rc $(STATIC_LIB_NAME) $(OBJ)
+#	ranlib $(STATIC_LIB_NAME)
+
+$(DYNAMIC_LIB): $(OBJ)
+	echo "Make $(DYNAMIC_LIB)"
 
 main.o: ${DEPS}
 
